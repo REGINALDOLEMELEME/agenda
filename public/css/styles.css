@@ -1,0 +1,44 @@
+* {
+    font-family: 'Roboto';
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 80%;
+}
+
+footer {
+    margin-top: auto;
+    color: whitesmoke;
+}
+
+footer p {
+    text-align: center;
+}
+
+.fundo img {
+    width: 100%;
+    height: 50%;
+}
+
+header {
+    background-color: #3b025f;
+}
+
+.fs-4 {
+    color: whitesmoke;
+}
+
+.nav-item a {
+    background-color: blueviolet;
+    color: whitesmoke;
+}
+
+#icon_teatro{
+
+    width: 100px;
+    height: 100px;
+    margin-left: 36%;
+
+}

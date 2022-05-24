@@ -35,13 +35,19 @@
       @guest
         <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Home</a></li>
         <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
-        <li class="nav-item"><a href="/register" class="nav-link">Registrar</a></li>
+        <li class="nav-item"><a href="/register" class="nav-link">Cadastrar</a></li>
         @endguest
         @auth
         <li class="nav-item"><a href="/agenda/create" class="nav-link">Agendar</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Meus Agendamento</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+        <li class="nav-item">
+          <form action="/logout" method="POST">
+    @csrf
+        <a href="#" class="nav-link" 
+        onclick="event.preventDefault();
+        this.closest('form').submit();">Sair</a></li>
+              </form>  
+       
         @endauth
       </ul>
     </header>

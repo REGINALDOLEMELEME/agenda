@@ -13,9 +13,7 @@
         <!-- Styles -->
     
         <link href="/css/styles.css" rel="stylesheet">
-         <!-- JS -->
-    
-    <script src="/js/scripts.js"></script>
+
       <!-- BOOTSTRAP CSS -->
       <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -65,4 +63,8 @@
 <p>Agenda de Teatros &copy; 2022</p>
 </footer>
     
+         <!-- JS -->
+    
+         <script src="/js/scripts.js"></script>
+
 </html>

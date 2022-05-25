@@ -10,7 +10,7 @@
 
 <form action="/agenda/search" method="GET" >
   <div class="form-group" style="margin-left: -2px;">
-  <input type="date" name="dataFind" id="data" required>
+  <input type="date" name="dataFind" id="campoData" required>
   <button type="submit" class="btn btn-primary" style="width: 20%;height: 58px;">PESQUISAR</button>
   </div>
  

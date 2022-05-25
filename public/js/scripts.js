@@ -1,28 +1,38 @@
-function pad(valor) { // completa com zeros à esquerda, caso necessário
-    return valor.toString().padStart(2, '0');
+const d = new Date();
+
+var ano = d.getFullYear();
+
+var mes_to_convert_min = d.getMonth()+1;
+
+if(mes_to_convert_min <=9){
+
+    mesAtual = "0" + mes_to_convert_min;
+
+}else{
+
+    mesAtual = mes_to_convert_min;
+
 }
 
-function formata(data) {
-    return `${data.getFullYear()}-${pad(data.getMonth() + 1)}-${pad(data.getDate())}`;
+var mes_to_convert_max = d.getMonth()+3;
+
+if(mes_to_convert_max <=9){
+
+    mesPosterior = "0" + mes_to_convert_max;
+
+}else{
+
+    mesPosterior = mes_to_convert_max;
+
 }
 
-const campo = document.querySelector('#data');
+var datestringmin = ano + "-" + mesAtual + "-" + d.getDate();
 
-window.addEventListener('DOMContentLoaded', function() {
-    var data = new Date(); // data de hoje
-    campo.min = formata(data);
-    // 2 anos à frente
-    data.setFullYear(data.getFullYear() + 2);
-    campo.max = formata(data);
-});
+var datestringmax = ano + "-" + mesPosterior + "-" + d.getDate();
 
-// mensagens de validação
-campo.addEventListener('input', () => {
-  campo.setCustomValidity('');
-  campo.checkValidity();
-});
+console.log(datestringmax);
 
-// se tentar submeter o form com data fora do intervalo, mostra o erro
-campo.addEventListener('invalid', () => {
-    campo.setCustomValidity('A data deve estar entre hoje e 2 anos à frente');
-});
+
+document.getElementById("campoData").min = datestringmin;
+
+document.getElementById("campoData").max = datestringmax;

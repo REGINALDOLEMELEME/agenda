@@ -14,6 +14,12 @@
   <button type="submit" class="btn btn-primary" style="width: 20%;height: 58px;">PESQUISAR</button>
   </div>
  
+        
+  @if(session('msg'))
+
+<p class="msg">{{session('msg')}}</p>
+
+@endif
 
 </form>
 
@@ -23,6 +29,10 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">{{$data}}</h5>
+
+
+
+
 
      <?php
      

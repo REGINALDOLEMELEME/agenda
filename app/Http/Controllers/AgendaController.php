@@ -33,19 +33,30 @@ class AgendaController extends Controller
       $agenda = Agenda::where('data_evento',  $dataFind)
                  ->get();
 
+      // print($agenda);
+      // return;           
+
       $faixaHora = [1,2,3];
           
       foreach($agenda as $ag){
 
-        unset($faixaHora[$ag->periodo]);  
+  
+        $id = array_search($ag->periodo,$faixaHora);
 
-      }
+        unset($faixaHora[$id]);
 
-      //print_r($faixaHora);  
+       }
 
-     // return;
+    if(count($faixaHora)>0){
 
       return view('search',['data'=>$data],['faixaHora'=>$faixaHora]);
+
+     }else{
+
+      return redirect('/agenda/search')->with('msg', 'Não foram localizados horários disponíveis para o referido dia!');
+
+     }
+  
 
     
      

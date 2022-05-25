@@ -78,4 +78,14 @@ input[type=date] {
     cursor: pointer;
   }
 
+  .msg{
+
+    background-color:  rgb(102, 0, 94);
+    color: white;
+    padding: 10px;
+    border-radius: 3px;
+    width: 40%;
+
+
+  }
  

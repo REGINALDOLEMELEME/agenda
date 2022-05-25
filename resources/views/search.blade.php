@@ -19,21 +19,37 @@
 
 @if($data)
 
-@foreach($data as $dt)
-
-
 <div class="col-sm-3" style="margin-top: 10px;">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">{{$dt}}</h5>
-        <a href="#" class="btn btn-primary ">MANHÃ</a>
-        <a href="#" class="btn btn-secondary">TARDE</a>
-        <a href="#" class="btn btn-warning disabled ">NOITE</a>
+        <h5 class="card-title">{{$data}}</h5>
+
+     <?php
+     
+     if(in_array(1, $faixaHora)){
+
+      echo '<a href="#" class="btn btn-primary ">MANHÃ</a>';
+
+     }
+
+     if(in_array(2, $faixaHora)){
+
+      echo '  <a href="#" class="btn btn-secondary">TARDE</a>';
+
+     }
+
+     if(in_array(3, $faixaHora)){
+
+      echo ' <a href="#" class="btn btn-warning disabled ">NOITE</a>';
+
+     }  
+
+       ?>
+
       </div>
     </div>
   </div>
 
-@endforeach
 @endif
 </div>
 

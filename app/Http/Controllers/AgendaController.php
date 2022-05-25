@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\Models\Agenda;
 
 class AgendaController extends Controller
 {
@@ -24,14 +24,32 @@ class AgendaController extends Controller
 
     $dataFind = request('dataFind');
 
-    $consultas = ['minimo'=>date('Y-m-d'), 'maximo'=>date('Y-m-d')];
-
+ 
     if($dataFind){
       
-      $data = implode("/",array_reverse(explode("-",$dataFind)));         
-      $result = ['day'=>$data];
+      $data = implode("/",array_reverse(explode("-",$dataFind)));       
+      
+      
+      $agenda = Agenda::where('data_evento',  $dataFind)
+                 ->get();
+
+      $faixaHora = [1,2,3];
+          
+      foreach($agenda as $ag){
+
+        unset($faixaHora[$ag->periodo]);  
+
+      }
+
+      //print_r($faixaHora);  
+
+     // return;
+
+      return view('search',['data'=>$data],['faixaHora'=>$faixaHora]);
+
+    
      
-      return view('search', ['data'=>$result]);
+    
 
     }else{
 

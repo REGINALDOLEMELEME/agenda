@@ -38,7 +38,7 @@
         <li class="nav-item"><a href="/register" class="nav-link">Cadastrar</a></li>
         @endguest
         @auth
-        <li class="nav-item"><a href="/agenda/create" class="nav-link">Agendar</a></li>
+        <li class="nav-item"><a href="/agenda/search" class="nav-link">Agendar</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Meus Agendamento</a></li>
         <li class="nav-item">
           <form action="/logout" method="POST">

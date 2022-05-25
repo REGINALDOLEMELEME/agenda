@@ -14,6 +14,7 @@ use App\Http\Controllers\AgendaController;
 */
 
 Route::get('/',[AgendaController::class, 'index']);
+Route::get('/agenda/search',[AgendaController::class, 'search']);
 Route::get('/agenda/create',[AgendaController::class, 'create']);
 Route::get('/agenda', function() {});
 Route::get('/agenda/{id}', function ($id = null) {

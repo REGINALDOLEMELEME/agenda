@@ -14,6 +14,7 @@ use App\Http\Controllers\AgendaController;
 */
 
 Route::get('/',[AgendaController::class, 'index']);
+Route::get('/dashboard',[AgendaController::class, 'index'])->middleware('auth');
 Route::get('/agenda/search',[AgendaController::class, 'search'])->middleware('auth');
 Route::get('/agenda/create',[AgendaController::class, 'create'])->middleware('auth');
 Route::get('/create',[AgendaController::class, 'create'])->middleware('auth');

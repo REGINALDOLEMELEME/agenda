@@ -37,25 +37,23 @@
       <div class="card-body">
         <h5 class="card-title">{{$data}}</h5>
 
-
-
      <?php
      
      if(in_array(1, $faixaHora)){
 
-      echo '<a href="/create?date='.$data.'&faixa=1" class="btn btn-primary ">MANHÃ</a>';
+      echo '<a href="/create?date='.$date.'&faixa=1" class="btn btn-primary ">MANHÃ</a>';
 
      }
 
      if(in_array(2, $faixaHora)){
 
-      echo '  <a href="/create?date='.$data.'&faixa=2"  class="btn btn-secondary">TARDE</a>';
+      echo '  <a href="/create?date='.$date.'&faixa=2"  class="btn btn-secondary">TARDE</a>';
 
      }
 
      if(in_array(3, $faixaHora)){
 
-      echo ' <a href="/create?date='.$data.'&faixa=3"  class="btn btn-warning ">NOITE</a>';
+      echo ' <a href="/create?date='.$date.'&faixa=3"  class="btn btn-warning ">NOITE</a>';
 
      }  
 

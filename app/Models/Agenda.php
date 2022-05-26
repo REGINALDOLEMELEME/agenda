@@ -9,6 +9,6 @@ class Agenda extends Model
 {
     use HasFactory;
 
-protected $data_evento = ['date'];
+protected $date = ['date'];
 
 }

@@ -16,10 +16,9 @@ class AgendaController extends Controller
   public function create(Request $request){
  
     $agendar = new Agenda;
-
-    $agendar->data_evento = implode("/",array_reverse(explode("-",$request->date)));
+    $agendar->data_evento = $request->date;
     $agendar->periodo =  $request->faixa;
-    $agendar->userId = Auth::user()->id;
+    $agendar->user_id = Auth::user()->id;
 
     try {
      
@@ -41,6 +40,8 @@ class AgendaController extends Controller
 
     $dataFind = request('dataFind');
 
+    $date =  $dataFind;
+
  
     if($dataFind){
       
@@ -49,9 +50,7 @@ class AgendaController extends Controller
       
       $agenda = Agenda::where('data_evento',  $dataFind)
                  ->get();
-
-      // print($agenda);
-      // return;           
+  
 
       $faixaHora = [1,2,3];
           
@@ -66,7 +65,7 @@ class AgendaController extends Controller
 
     if(count($faixaHora)>0){
 
-      return view('search',['data'=>$data],['faixaHora'=>$faixaHora]);
+      return view('search',['date'=>$date,'data'=>$data,'faixaHora'=>$faixaHora]);
 
      }else{
 

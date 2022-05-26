@@ -16,6 +16,7 @@ use App\Http\Controllers\AgendaController;
 Route::get('/',[AgendaController::class, 'index']);
 Route::get('/agenda/search',[AgendaController::class, 'search'])->middleware('auth');
 Route::get('/agenda/create',[AgendaController::class, 'create'])->middleware('auth');
+Route::get('/create',[AgendaController::class, 'create'])->middleware('auth');
 Route::get('/agenda', function() {});
 Route::get('/agenda/{id}', function ($id = null) {
     return view('agenda',['id'=>$id]);

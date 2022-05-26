@@ -88,4 +88,22 @@ input[type=date] {
 
 
   }
+
+  .msgInsert{
+
+    padding-top: 20px;
+    background-color:  rgb(8, 77, 34);
+    color: white;
+    padding: 10px;
+    border-radius: 3px;
+    width: 40%;
+
+
+  }
+
+  .espace{
+
+    padding-top: 15px;
+
+  }
  

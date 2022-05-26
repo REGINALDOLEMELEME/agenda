@@ -7,6 +7,13 @@
 
 <div class="container" style="margin-top:20px ;background-color:white;height:84.5vh">
 
+@if(session('msgInsert'))
+<div class="espace">
+<p class="msgInsert">{{session('msgInsert')}}</p>
+</div>
+
+@endif
+
 
 <form action="/agenda/search" method="GET" >
   <div class="form-group" style="margin-left: -2px;">
@@ -32,25 +39,23 @@
 
 
 
-
-
      <?php
      
      if(in_array(1, $faixaHora)){
 
-      echo '<a href="#" class="btn btn-primary ">MANHÃ</a>';
+      echo '<a href="/create?date='.$data.'&faixa=1" class="btn btn-primary ">MANHÃ</a>';
 
      }
 
      if(in_array(2, $faixaHora)){
 
-      echo '  <a href="#" class="btn btn-secondary">TARDE</a>';
+      echo '  <a href="/create?date='.$data.'&faixa=2"  class="btn btn-secondary">TARDE</a>';
 
      }
 
      if(in_array(3, $faixaHora)){
 
-      echo ' <a href="#" class="btn btn-warning disabled ">NOITE</a>';
+      echo ' <a href="/create?date='.$data.'&faixa=3"  class="btn btn-warning ">NOITE</a>';
 
      }  
 

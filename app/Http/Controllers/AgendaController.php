@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Agenda;
+use Auth;
 
 class AgendaController extends Controller
 {
@@ -12,11 +13,27 @@ class AgendaController extends Controller
 
   }
 
-  public function create(){
+  public function create(Request $request){
+ 
+    $agendar = new Agenda;
 
-    $dados = ['day'=>'01/01/2022','day2'=>'02/01/2022','day3'=>'03/01/2022','day4'=>'01/01/2022','day5'=>'02/01/2022','day6'=>'03/01/2022','day7'=>'01/01/2022','day8'=>'02/01/2022','day9'=>'03/01/2022','day10'=>'01/01/2022','day11'=>'02/01/2022','day12'=>'03/01/2022','day13'=>'01/01/2022','day14'=>'02/01/2022','day15'=>'03/01/2022','day16'=>'01/01/2022','day17'=>'02/01/2022','day18'=>'03/01/2022'];
-      
-    return view('agendar', ['dados'=>$dados]);
+    $agendar->data_evento = implode("/",array_reverse(explode("-",$request->date)));
+    $agendar->periodo =  $request->faixa;
+    $agendar->userId = Auth::user()->id;
+
+    try {
+     
+      $agendar->save();
+
+      return redirect('/agenda/search')->with('msgInsert', 'Agendamento realizado com sucesso!');
+
+
+    } catch (\Throwable $th) {
+      throw $th;
+    }
+
+  
+
 
   }
 

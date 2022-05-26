@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Agenda;
-use Auth;
-use PhpParser\Node\Expr\Print_;
+use Illuminate\Support\Facades\DB;
+
 
 class AgendaController extends Controller
 {
@@ -22,14 +22,19 @@ class AgendaController extends Controller
 
     if($perfil->access_nivel == 1){
 
-      $result =  Agenda::all();
+    $result =  DB::table('agendas')
+    ->join('users', 'users.id', '=', 'agendas.user_id')
+    ->get(); //Agenda::all();
 
-      return view('agend',['resultado'=>$result]);
+    return view('agend',['resultado'=>$result]);
 
 
     }else{
 
-      $result =  Agenda::where('user_id', $perfil->id)->get();
+    $result =  DB::table('agendas')
+    ->join('users', 'users.id', '=', 'agendas.user_id')
+    ->where('user_id', $perfil->id)
+    ->get(); //Agenda::all();
 
         return view('agend',['resultado'=>$result]);
 

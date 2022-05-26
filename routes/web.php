@@ -17,6 +17,8 @@ Route::get('/',[AgendaController::class, 'index']);
 Route::get('/dashboard',[AgendaController::class, 'index'])->middleware('auth');
 Route::get('/agenda/search',[AgendaController::class, 'search'])->middleware('auth');
 Route::get('/agenda/create',[AgendaController::class, 'create'])->middleware('auth');
+Route::get('/agend',[AgendaController::class, 'find'])->middleware('auth');
+Route::get('/agend/{id}',[AgendaController::class, 'drop'])->middleware('auth');
 Route::get('/create',[AgendaController::class, 'create'])->middleware('auth');
 Route::get('/agenda', function() {});
 Route::get('/agenda/{id}', function ($id = null) {

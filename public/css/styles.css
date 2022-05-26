@@ -101,9 +101,43 @@ input[type=date] {
 
   }
 
+  .msgDelete{
+
+    padding-top: 20px;
+    background-color:  rgb(119, 2, 2);
+    color: white;
+    padding: 10px;
+    border-radius: 3px;
+    width: 40%;
+
+  }
+
   .espace{
 
     padding-top: 15px;
 
   }
- 
+
+  .img_delete{
+
+    width: 25px;
+
+  }
+
+tbody{
+
+    width: 200px ;
+
+}
+
+tr td{
+
+width: 100px;
+
+}
+
+tr th{
+
+    width: 100px;
+    
+    }

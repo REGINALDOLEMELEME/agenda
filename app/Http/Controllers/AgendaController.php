@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Agenda;
 use Auth;
+use PhpParser\Node\Expr\Print_;
 
 class AgendaController extends Controller
 {
@@ -13,18 +14,63 @@ class AgendaController extends Controller
 
   }
 
+  
+  public function find(){
+
+    $perfil = Auth()->user();
+    
+
+    if($perfil->access_nivel == 1){
+
+      $result =  Agenda::all();
+
+      return view('agend',['resultado'=>$result]);
+
+
+    }else{
+
+      $result =  Agenda::where('user_id', $perfil->id)->get();
+
+        return view('agend',['resultado'=>$result]);
+
+    }
+  
+    return view('agend');
+
+}
+
   public function create(Request $request){
  
+    $perfil = Auth()->user();
+
     $agendar = new Agenda;
     $agendar->data_evento = $request->date;
     $agendar->periodo =  $request->faixa;
-    $agendar->user_id = Auth::user()->id;
+    $agendar->user_id =   $perfil->id;
 
     try {
      
       $agendar->save();
 
       return redirect('/agenda/search')->with('msgInsert', 'Agendamento realizado com sucesso!');
+
+
+    } catch (\Throwable $th) {
+      throw $th;
+    }
+
+
+  }
+
+  public function drop($id){
+
+    
+    try {
+     
+  
+      Agenda::destroy($id);
+
+      return redirect('/agend')->with('msgDelete', 'Agendamento cancelado com sucesso!');
 
 
     } catch (\Throwable $th) {

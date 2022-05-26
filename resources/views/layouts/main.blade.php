@@ -38,10 +38,10 @@
         @auth
         <li class="nav-item"><a href="/agenda/search" class="nav-link">Agendar</a></li>
         @if( Auth::user()->access_nivel ==1 )
-        <li class="nav-item"><a href="#" class="nav-link">Alterar Agendamento</a></li>
+        <li class="nav-item"><a href="/agend" class="nav-link">Alterar Agendamento</a></li>
         @endif
         @if( Auth::user()->access_nivel !=1 )
-        <li class="nav-item"><a href="#" class="nav-link">Meus Agendamento</a></li>
+        <li class="nav-item"><a href="/agend" class="nav-link">Meus Agendamento</a></li>
         @endif
      
         <li class="nav-item">

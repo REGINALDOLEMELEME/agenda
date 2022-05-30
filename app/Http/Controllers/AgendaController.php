@@ -24,8 +24,9 @@ class AgendaController extends Controller
 
     $result =  DB::table('agendas')
     ->join('users', 'users.id', '=', 'agendas.user_id')
-    ->get(['agendas.id', 'agendas.data_evento','agendas.periodo','users.name']); //Agenda::all();
-
+    ->orderBy('data_evento', 'DESC', 'periodo', 'ASC')
+    ->get(['agendas.id', 'agendas.data_evento','agendas.periodo','users.name']);
+      
       
     return view('agend',['resultado'=>$result]);
     
@@ -36,7 +37,9 @@ class AgendaController extends Controller
       $result =  DB::table('agendas')
     ->join('users', 'users.id', '=', 'agendas.user_id')
     ->where('user_id', $perfil->id)
-    ->get(['agendas.id', 'agendas.data_evento','agendas.periodo','users.name']); //Agenda::all();
+    ->orderBy('data_evento', 'DESC', 'periodo', 'ASC')
+    ->get(['agendas.id', 'agendas.data_evento','agendas.periodo','users.name']);
+ 
 
         return view('agend',['resultado'=>$result]);
 
@@ -95,10 +98,34 @@ class AgendaController extends Controller
 
     $date =  $dataFind;
 
+    $perfil = Auth()->user();
+
  
     if($dataFind){
       
-      $data = implode("/",array_reverse(explode("-",$dataFind)));       
+      $data = implode("/",array_reverse(explode("-",$dataFind)));     
+      
+      $checkAgend = Agenda::where('data_evento',  $dataFind)
+      ->where('user_id', $perfil->id )
+      ->get();
+
+      if(count($checkAgend)>0){
+
+        return redirect('/agenda/search')->with('msg', 'Você já possui um agendamento para esse dia!');
+
+      }
+
+      $findMonth =  date('m', strtotime($dataFind)); 
+
+      $maxAgend = Agenda::where('user_id', $perfil->id)
+                 ->whereMonth('data_evento', $findMonth)
+                          ->get();
+
+      if(count($maxAgend)==8){
+
+        return redirect('/agenda/search')->with('msg', 'Você já efetuou 08 (oito) agendamentos para o referido mês!');
+
+      }
       
       
       $agenda = Agenda::where('data_evento',  $dataFind)

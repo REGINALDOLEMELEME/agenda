@@ -24,17 +24,19 @@ class AgendaController extends Controller
 
     $result =  DB::table('agendas')
     ->join('users', 'users.id', '=', 'agendas.user_id')
-    ->get(); //Agenda::all();
+    ->get(['agendas.id', 'agendas.data_evento','agendas.periodo','users.name']); //Agenda::all();
 
+      
     return view('agend',['resultado'=>$result]);
+    
 
 
     }else{
 
-    $result =  DB::table('agendas')
+      $result =  DB::table('agendas')
     ->join('users', 'users.id', '=', 'agendas.user_id')
     ->where('user_id', $perfil->id)
-    ->get(); //Agenda::all();
+    ->get(['agendas.id', 'agendas.data_evento','agendas.periodo','users.name']); //Agenda::all();
 
         return view('agend',['resultado'=>$result]);
 

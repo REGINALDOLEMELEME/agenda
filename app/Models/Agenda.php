@@ -9,6 +9,15 @@ class Agenda extends Model
 {
     use HasFactory;
 
-protected $date = ['date'];
+protected $date = ['data_evento'];
+
+
+protected $fillable = [
+    'data_evento',
+    'periodo',
+    'user_id',
+];
 
 }
+
+

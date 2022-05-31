@@ -5,11 +5,20 @@
 @section('content')
 
 
-<div class="container" style="margin-top:20px ;background-color:white;height:84.5vh">
+<div class="container" style="margin-top:20px ;background-color:white;min-height: 84.5vh">
+
+@if(session('msgDelete'))
+
+<div class="espace">
+<p class="msgDelete">{{session('msgDelete')}}</p>
+</div>
+
+@endif
 
 @if(session('msgInsert'))
+
 <div class="espace">
-<p class="msgInsert">{{session('msgInsert')}}</p>
+<p class="msgInsert" >{{session('msgInsert')}}</p>
 </div>
 
 @endif
@@ -78,11 +87,7 @@
 
 @endif
         
-@if(session('msgDelete'))
 
-<p class="msgDelete">{{session('msgDelete')}}</p>
-
-@endif
 
 </div>
 
